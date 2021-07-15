@@ -38,3 +38,16 @@ class Kollektor(object):
                 return value
 
         return None
+
+    def has(self, item: Any) -> bool:
+        """
+        Check an object is in collection.
+
+        **Parameters**:
+        - item (`Any`): The item will be checked.
+
+        **Returns**:
+        - `bool`: True or False
+        """
+
+        return self.find(item) is not None
