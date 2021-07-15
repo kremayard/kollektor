@@ -81,3 +81,25 @@ class Kollektor(object):
         self.items = filtered
 
         return self.items
+
+    def first(self) -> Union[Any, None]:
+        """
+        Get first element from the collection.
+
+        **Returns**:
+        - `Any`: object.
+        - `None`
+        """
+
+        return self.items[0] if len(self.items) > 0 else None
+
+    def last(self) -> Union[Any, None]:
+        """
+        Get last element from the collection.
+
+        **Returns**:
+        - `Any`: object.
+        - `None`
+        """
+
+        return self.items[-1] if len(self.items) > 0 else None
