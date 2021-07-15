@@ -4,6 +4,7 @@ Collection utility for Python.
 
 
 from typing import Any, Union
+from .classes import Nothing
 
 
 class Kollektor(object):
@@ -21,7 +22,7 @@ class Kollektor(object):
 
         self.items: tuple = args
 
-    def find(self, item: Any) -> Union[Any, None]:
+    def find(self, item: Any) -> Union[Any, Nothing]:
         """
         Find an object from collection.
 
@@ -30,14 +31,14 @@ class Kollektor(object):
 
         **Returns**:
         - `Any`: Found object.
-        - `None`
+        - `Nothing`
         """
 
         for value in self.items:
             if value == item:
                 return value
 
-        return None
+        return Nothing
 
     def has(self, item: Any) -> bool:
         """
@@ -82,24 +83,38 @@ class Kollektor(object):
 
         return self.items
 
-    def first(self) -> Union[Any, None]:
+    def first(self) -> Union[Any, Nothing]:
         """
         Get first element from the collection.
 
         **Returns**:
         - `Any`: object.
-        - `None`
+        - `Nothing`
         """
 
-        return self.items[0] if len(self.items) > 0 else None
+        return self.items[0] if len(self.items) > 0 else Nothing
 
-    def last(self) -> Union[Any, None]:
+    def last(self) -> Union[Any, Nothing]:
         """
         Get last element from the collection.
 
         **Returns**:
         - `Any`: object.
-        - `None`
+        - `Nothing`
         """
 
-        return self.items[-1] if len(self.items) > 0 else None
+        return self.items[-1] if len(self.items) > 0 else Nothing
+
+    def index(self, index: int) -> Union[Any, Nothing]:
+        """
+        Get last element from the collection.
+
+        **Returns**:
+        - `Any`: object.
+        - `Nothing`
+        """
+
+        try:
+            return self.items[index]
+        except IndexError:
+            return Nothing
