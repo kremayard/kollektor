@@ -63,5 +63,5 @@ class Kollektor(object):
         - `tuple`: Added items.
         """
 
-        self.items = (self.items, *args, )
+        self.items = (*self.items, *args, )
         return args
