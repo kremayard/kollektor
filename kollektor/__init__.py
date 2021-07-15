@@ -65,3 +65,19 @@ class Kollektor(object):
 
         self.items = (*self.items, *args, )
         return args
+
+    def remove(self, *args: Any) -> tuple:
+        """
+        Remove one or more object from the collection.
+
+        **Parameters**:
+        - `*args`: The item(s) will be removed.
+
+        **Returns**:
+        - `tuple`: New items.
+        """
+
+        filtered = tuple(value for value in self.items if value not in args)
+        self.items = filtered
+
+        return self.items
