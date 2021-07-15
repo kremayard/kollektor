@@ -1,2 +1,4 @@
-class Nothing(object):
+class Nothing:
+    """None-Type replacement for Kollektor."""
+
     pass

@@ -42,7 +42,7 @@ class Kollektor(object):
 
         **Returns**:
         - `Any`: Found object.
-        - `Nothing`
+        - `kollektor.Nothing`
         """
 
         for value in self.items:
@@ -100,7 +100,7 @@ class Kollektor(object):
 
         **Returns**:
         - `Any`: object.
-        - `Nothing`
+        - `kollektor.Nothing`
         """
 
         return self.items[0] if len(self.items) > 0 else Nothing
@@ -111,7 +111,7 @@ class Kollektor(object):
 
         **Returns**:
         - `Any`: object.
-        - `Nothing`
+        - `kollektor.Nothing`
         """
 
         return self.items[-1] if len(self.items) > 0 else Nothing
@@ -122,7 +122,7 @@ class Kollektor(object):
 
         **Returns**:
         - `Any`: object.
-        - `Nothing`
+        - `kollektor.Nothing`
         """
 
         try:
