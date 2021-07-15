@@ -11,7 +11,7 @@ class Kollektor(object):
     Base class for kollektor.
     """
 
-    def __init__(self, *args) -> None:
+    def __init__(self, *args: Any) -> None:
         """
         Construct a new 'Kollektor' object.
 
@@ -51,3 +51,17 @@ class Kollektor(object):
         """
 
         return self.find(item) is not None
+
+    def append(self, *args: Any) -> tuple:
+        """
+        Append one or more object to the collection.
+
+        **Parameters**:
+        - `*args`: The item(s) will be added.
+
+        **Returns**:
+        - `tuple`: Added items.
+        """
+
+        self.items = (self.items, *args, )
+        return args
