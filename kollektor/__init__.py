@@ -22,6 +22,10 @@ class Kollektor(object):
 
         self.items: tuple = args
 
+    @property
+    def length(self) -> int:
+        return len(self.items)
+
     def find(self, item: Any) -> Union[Any, Nothing]:
         """
         Find an object from collection.
