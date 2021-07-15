@@ -3,7 +3,7 @@ Collection utility for Python.
 """
 
 
-from typing import Any, Callable, Union
+from typing import Any, Callable, Generator, Union
 from .classes import Nothing
 
 
@@ -24,6 +24,13 @@ class Kollektor(object):
 
     @property
     def length(self) -> int:
+        """
+        Get collection length.
+
+        **Returns**:
+        - `int`: Collection length.
+        """
+
         return len(self.items)
 
     def find(self, item: Any) -> Union[Any, Nothing]:
@@ -132,3 +139,13 @@ class Kollektor(object):
         """
 
         return tuple(value for value in self.items if fn(value))
+
+    def each(self, fn: Callable) -> list:
+        """
+        Iterate objects from collection.
+
+        **Returns**:
+        - `list`: List of returned values.
+        """
+
+        return [fn(index, value) for index, value in enumerate(self.items[:])]
