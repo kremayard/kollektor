@@ -1,0 +1,7 @@
+{
+    "name": "kollektor",
+    "description": "Collection utility for Python.",
+    "tags": ["krema", "collection", "kollektor"],
+    "pipreq": [],
+    "unireq": []
+}
