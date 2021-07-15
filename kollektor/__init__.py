@@ -3,7 +3,7 @@ Collection utility for Python.
 """
 
 
-from typing import Any, Union
+from typing import Any, Callable, Union
 from .classes import Nothing
 
 
@@ -107,7 +107,7 @@ class Kollektor(object):
 
     def index(self, index: int) -> Union[Any, Nothing]:
         """
-        Get last element from the collection.
+        Find an object from collection with index.
 
         **Returns**:
         - `Any`: object.
@@ -118,3 +118,13 @@ class Kollektor(object):
             return self.items[index]
         except IndexError:
             return Nothing
+
+    def filter(self, fn: Callable) -> tuple:
+        """
+        Filter objects from collection.
+
+        **Returns**:
+        - `tuple`: Filtered object(s).
+        """
+
+        return tuple(value for value in self.items if fn(value))
