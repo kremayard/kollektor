@@ -1,5 +1,4 @@
 test.*
 __pycache__/
-*pydoc*
-*readthedocs*
-build/
+docs.bat
+html/
