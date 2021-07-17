@@ -6,7 +6,7 @@
 </div>
 
 ## Documentation
-Check [/docs/](https://github.com/kremayard/kollektor/tree/main/docs) folder for more information.
+Check https://kremayard.github.io/kollektor/
 ## Installation
 Run `unikorn add kremayard kollektor` and you are ready to go!
 
