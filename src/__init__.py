@@ -30,8 +30,8 @@ class Kollektor(object):
     def find(self, item: Any) -> Union[Any, Nothing]:
         """Find an object from collection.
 
-        Parameters:
-            item: The item will be found.
+        Args:
+            item (Any): The item will be found.
 
         Returns:
             Any: Found object.
@@ -39,7 +39,7 @@ class Kollektor(object):
         """
 
         for value in self.items:
-            if value == item:
+            if value == item (Any):
                 return value
 
         return Nothing
@@ -47,8 +47,8 @@ class Kollektor(object):
     def has(self, item: Any) -> bool:
         """Check an object is in collection.
 
-        Parameters:
-            item: The item will be checked.
+        Args:
+            item (Any): The item will be checked.
 
         Returns:
             bool: True or False
@@ -59,7 +59,7 @@ class Kollektor(object):
     def append(self, *args: Any) -> tuple:
         """Append one or more object to the collection.
 
-        Parameters:
+        Args:
             *args: The item(s) will be added.
 
         Returns:
@@ -69,10 +69,27 @@ class Kollektor(object):
         self.items = (*self.items, *args, )
         return args
 
+    def update(self, index: int, new_item: Any) -> Any:
+        """Update one object from collection with index.
+
+        Args:
+            index (int): The item(s) will be replaced index.
+            new_item (Any): New item.
+
+        Returns:
+            Any: New item.
+        """
+
+        item_list = list(self.items)
+        item_list[index] = new_item
+        self.items = tuple(item_list)
+
+        return item_list[index]
+
     def remove(self, *args: Any) -> tuple:
         """Remove one or more object from the collection.
 
-        Parameters:
+        Args:
             *args: The item(s) will be removed.
 
         Returns:
