@@ -31,7 +31,7 @@ class Kollektor(object):
         """Find an object from collection.
 
         Args:
-            item (Any): The item will be found.
+            fn (Callable): The item will be found.
 
         Returns:
             Any: Found object.
@@ -39,7 +39,7 @@ class Kollektor(object):
         """
 
         for value in self.items:
-            if value == item (Any):
+            if value == item:
                 return value
 
         return Nothing
@@ -54,7 +54,7 @@ class Kollektor(object):
             bool: True or False
         """
 
-        return self.find(item) is not None
+        return self.find(item) != Nothing
 
     def append(self, *args: Any) -> tuple:
         """Append one or more object to the collection.
@@ -80,11 +80,10 @@ class Kollektor(object):
             Any: New item.
         """
 
-        item_list = list(self.items)
-        item_list[index] = new_item
-        self.items = tuple(item_list)
+        self.items = tuple(v if i != index else new_item for i,
+                           v in enumerate(self.items))
 
-        return item_list[index]
+        return new_item
 
     def remove(self, *args: Any) -> tuple:
         """Remove one or more object from the collection.
