@@ -27,19 +27,19 @@ class Kollektor(object):
 
         return len(self.items)
 
-    def find(self, item: Any) -> Union[Any, Nothing]:
+    def find(self, fn: Callable) -> Union[Any, Nothing]:
         """Find an object from collection.
 
         Args:
-            fn (Callable): The item will be found.
+            fn (Callable): The function must return bool.
 
         Returns:
             Any: Found object.
-            kollektor.Nothing`
+            kollektor.Nothing
         """
 
         for value in self.items:
-            if value == item:
+            if fn(value):
                 return value
 
         return Nothing
@@ -54,7 +54,7 @@ class Kollektor(object):
             bool: True or False
         """
 
-        return self.find(item) != Nothing
+        return self.find(lambda v: v == item) != Nothing
 
     def append(self, *args: Any) -> tuple:
         """Append one or more object to the collection.
