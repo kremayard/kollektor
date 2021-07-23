@@ -12,16 +12,16 @@ class Kollektor:
 
     Args:
         limit (int): Collection limit.
-        *args: Items for collection.
+        items (tuple): Items for collection.
 
     Attributes:
         limit (int): Collection limit.
         items (tuple): All of the items in the collection.
     """
 
-    def __init__(self, limit: int = None, *args: Any) -> None:
+    def __init__(self, limit: int = None, items: tuple = ()) -> None:
         self.limit: int = limit
-        self.items: tuple = args
+        self.items: tuple = items
 
     @property
     def length(self) -> int:
@@ -72,7 +72,15 @@ class Kollektor:
             tuple: Added items.
         """
 
-        self.items = (*self.items, *args, )
+        if self.limit is not None:
+            if (len(self.items) + len(args)) > self.limit:
+                self.remove_index(*range(len(args)))
+                self.items = (*self.items, *args, )
+            else:
+                self.items = (*self.items, *args, )
+        else:
+            self.items = (*self.items, *args, )
+
         return args
 
     def update(self, index: int, new_item: Any) -> Any:
