@@ -4,7 +4,7 @@ Collection utility for Python.
 
 
 from typing import Any, Callable, Union
-from .classes import Nothing
+from .classes import *
 
 
 class Kollektor:
@@ -22,6 +22,10 @@ class Kollektor:
     def __init__(self, limit: int = None, items: tuple = ()) -> None:
         self.limit: int = limit
         self.items: tuple = items
+
+        if self.limit is not None:
+            if len(self.items) > self.limit:
+                raise LimitExceeded("Maximum limit exceeded for start items.")
 
     @property
     def length(self) -> int:

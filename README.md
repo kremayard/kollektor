@@ -14,7 +14,7 @@ Run `unikorn add kremayard kollektor` and you are ready to go!
 ```py
 from unikorn import kollektor
 
-collection = kollektor.Kollektor(2, 3, 4)
+collection = kollektor.Kollektor(limit=5, items=())
 
 # Print Collection Length
 print(collection.length)
