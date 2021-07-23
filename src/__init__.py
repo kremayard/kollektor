@@ -7,14 +7,20 @@ from typing import Any, Callable, Union
 from .classes import Nothing
 
 
-class Kollektor(object):
+class Kollektor:
     """Base class for kollektor.
 
+    Args:
+        limit (int): Collection limit.
+        *args: Items for collection.
+
     Attributes:
+        limit (int): Collection limit.
         items (tuple): All of the items in the collection.
     """
 
-    def __init__(self, *args: Any) -> None:
+    def __init__(self, limit: int = None, *args: Any) -> None:
+        self.limit: int = limit
         self.items: tuple = args
 
     @property
@@ -85,6 +91,21 @@ class Kollektor(object):
 
         return new_item
 
+    def remove_index(self, *args: int) -> Any:
+        """Remove one or more object from collection with index.
+
+        Args:
+            *args (int): List of indexs.
+
+        Returns:
+            tuple: New items.
+        """
+
+        self.items = tuple(value for index, value in enumerate(
+            self.items) if index not in args)
+
+        return self.items
+
     def remove(self, *args: Any) -> tuple:
         """Remove one or more object from the collection.
 
@@ -95,8 +116,7 @@ class Kollektor(object):
             tuple: New items.
         """
 
-        filtered = tuple(value for value in self.items if value not in args)
-        self.items = filtered
+        self.items = tuple(value for value in self.items if value not in args)
 
         return self.items
 
