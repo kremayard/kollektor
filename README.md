@@ -6,13 +6,25 @@
 </div>
 
 ## Documentation
+
 Check https://kremayard.github.io/kollektor/
+
 ## Installation
+
+### Unikorn
+
 Run `unikorn add kremayard kollektor` and you are ready to go!
 
+### Pip
+
+Run `pip install kollektor` and you are ready to go!
+
 ## Example
+
 ```py
 from unikorn import kollektor
+# if you use pip, replace with:
+# import kollektor
 
 collection = kollektor.Kollektor(limit=5, items=())
 
